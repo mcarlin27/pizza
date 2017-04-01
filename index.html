@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.2.2.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Pizza!</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Order a Pizza</h1>
+      </div>
+      <form id="new-pizza">
+        <p><strong>Select a crust type</strong></p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="crust" value="thin" checked>
+            Thin Crust
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="crust" value="deep-dish">
+            Deep Dish
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="crust" value="grandma">
+            Grandma Style
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="crust" value="gluten-free">
+            Gluten Free
+          </label>
+        </div>
+        <p><strong>Choose some cheese:</strong></p>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="mozzarella" value="mozzarella">
+          Mozzarella
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="feta" value="feta">
+          Feta
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="ricotta" value="ricotta">
+          Ricotta
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="vegan" value="vegan">
+          Vegan--Daiya
+        </label>
+        <br><br>
+        <label for="size">Select your size</label>
+        <select id="size">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+        <br><br>
+        <div class="form-group">
+          <p><strong>Traditional Toppings</strong></p>
+          <input type="checkbox" name="trad-toppings" value="pepperoni">Pepperoni<br>
+          <input type="checkbox" name="trad-toppings" value="sausage">Sausage<br>
+          <input type="checkbox" name="trad-toppings" value="peppers">Bell pepper<br>
+          <input type="checkbox" name="trad-toppings" value="onion">Onion<br>
+          <input type="checkbox" name="trad-toppings" value="olive">Olives<br>
+          <input type="checkbox" name="trad-toppings" value="garlic">Garlic<br>
+          <input type="checkbox" name="trad-toppings" value="anchovy">Anchovies<br>
+          <input type="checkbox" name="trad-toppings" value="artichoke">Artichoke<br>
+          <input type="checkbox" name="trad-toppings" value="mushrooms">Mushrooms<br>
+        </div>
+        <br>
+        <div class="form-group">
+          <p><strong>Tubular Toppings</strong></p>
+          <input type="checkbox" name="odd-toppings" value="pineapple">Pineapple<br>
+          <input type="checkbox" name="odd-toppings" value="potato">Potato<br>
+          <input type="checkbox" name="odd-toppings" value="egg">Fried egg<br>
+          <input type="checkbox" name="odd-toppings" value="jackfruit">Jackfruit<br>
+          <input type="checkbox" name="odd-toppings" value="vegan-meat">Vegan sausage<br>
+          <input type="checkbox" name="odd-toppings" value="unicorn">Unicorn meat<br>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <span class="btn btn-default" id="add-pizza">Another pizza?!</span>
+          </div>
+          <div class="col-md-2">
+            <span class="btn btn-default" id="add-address">Add Delivery Address</span>
+          </div>
+        </div>
+        <br>
+        <div id="address">
+          <div class="delivery-address">
+            <label for="addressType">Address Type</label>
+            <select class="form-control" id="addressType">
+              <option>House</option>
+              <option>Apartment</option>
+              <option>Office</option>
+            </select>
+            <br>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control street">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control city">
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control state">
+            </div>
+            <div class="form-group">
+              <label for="input">Special Instructions?</label>
+              <textarea id="input" class="form-control" rows="4" cols="10" placeholder="Enter text here"></textarea>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+      </form>
+      <div class="row">
+        <div class="col-md-6">
+          <div id="order-confirmation">
+            <h2>Your Order:</h2>
+            <p><span class="full-order"></span></p>
+            <p>Addresses:</p>
+            <ul id="address-confirmation">
+            </ul>
+            <p><span class="order-price"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
