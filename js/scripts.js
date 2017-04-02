@@ -1,9 +1,15 @@
 // business logic
 
 function Pizza(crust, cheese, toppings) {
-  this.pizzaCrust = crust;
-  this.pizzaCheese = cheese;
-  this.pizzaToppings = toppings;
+  this.crust = crust;
+  this.sauce = sauce;
+  this.cheese = cheese;
+  this.toppings = toppings;
+}
+
+Pizza.prototype.priceCalc = function() {
+  var pizzaPrice = (this.crust * 5) + (this.size) + (this.sauce) + (this.cheeses * 1.5) + (this.toppings);
+  return price;
 }
 
 function Address(addressType, street, city, state) {
@@ -50,6 +56,8 @@ $(document).ready(function() {
 
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
+
+    var
 
 
   });
