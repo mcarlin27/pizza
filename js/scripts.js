@@ -12,8 +12,8 @@ function Pizza(crust, sauce, cheese, size, toppings, extraToppings) {
   this.extraToppings = extraToppings;
 }
 
-Pizza.prototype.priceCalc = function() {
-  var pizzaPrice = (this.crust * 5) + (this.size) + (this.sauce) + (this.cheeses * 1.5) + (this.toppings);
+Pizza.prototype.priceCalc = function(crust, sauce, cheese, size, toppings, extraToppings) {
+  var pizzaPrice = (this.crust * 5) + (this.sauce) + parseInt(this.cheese) + (this.size) + parseInt(this.toppings) + parseInt(this.extraToppings);
   return pizzaPrice;
 }
 
@@ -128,14 +128,14 @@ $(document).ready(function() {
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
 
-    crust = $("input:radio[name=crust]:checked").val();
-    sauce = $("#sauce").val();
+    crust = parseInt($("input:radio[name=crust]:checked").val());
+    sauce = parseInt($("#sauce").val());
     $("input:checkbox[name=cheese]:checked").each(function() {
       var cheeseChoice = parseInt($(this).val());
       cheese.push(cheeseChoice);
       return cheese;
     });
-    size = $("#size").val();
+    size = parseInt($("#size").val());
     $("input:checkbox[name=trad-toppings]:checked").each(function() {
       var toppingsChoice = parseInt($(this).val());
       toppings.push(toppingsChoice);
@@ -152,10 +152,11 @@ $(document).ready(function() {
     // console.log(toppings);
     // console.log(extraToppings);
 
+    var pizzaOrder = new Pizza(crust, sauce, cheese, size, toppings, extraToppings);
 
+    var pizzaOrderPrice = pizzaOrder.priceCalc(crust, sauce, cheese, size, toppings, extraToppings);
+    console.log(pizzaOrderPrice);
 
-
-    // var orderPrice = new Pizza.priceCalc()
     //
     // var addressType = $(this).find("select#addressType").val();
     // var inputtedStreet = $(this).find("input.street").val();
