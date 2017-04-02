@@ -3,7 +3,7 @@
   <head>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery-3.2.2.js"></script>
+    <script src="js/jquery-3.2.0.js"></script>
     <script src="js/scripts.js"></script>
     <title>Pizza!</title>
   </head>
@@ -48,19 +48,19 @@
         <br><br>
         <p><strong>Choose some cheese:</strong></p>
         <label class="checkbox-inline">
-          <input type="checkbox" id="mozzarella" value="1">
+          <input type="checkbox" name="cheese" id="mozzarella" value="1">
           Mozzarella
         </label>
         <label class="checkbox-inline">
-          <input type="checkbox" id="feta" value="3">
+          <input type="checkbox" name="cheese" id="feta" value="3">
           Feta
         </label>
         <label class="checkbox-inline">
-          <input type="checkbox" id="ricotta" value="2">
+          <input type="checkbox" name="cheese" id="ricotta" value="2">
           Ricotta
         </label>
         <label class="checkbox-inline">
-          <input type="checkbox" id="vegan" value="4">
+          <input type="checkbox" name="cheese" id="vegan" value="4">
           Vegan--Daiya
         </label>
         <br><br>
@@ -95,11 +95,13 @@
         </div>
         <div class="row">
           <div class="col-md-2">
-            <span class="btn btn-default" id="add-pizza">Another pizza?!</span>
+            <span class="btn btn-danger" id="add-pizza">Another pizza?!</span>
           </div>
           <div class="col-md-2">
-            <span class="btn btn-default" id="add-address">Add Delivery Address</span>
+            <span class="btn btn-success" id="add-address">Add Delivery Address</span>
           </div>
+        </div>
+        <div id="more-pizza">
         </div>
         <br>
         <div id="address">
@@ -125,7 +127,7 @@
             </div>
             <div class="form-group">
               <label for="input">Special Instructions?</label>
-              <textarea id="input" class="form-control" rows="4" cols="10" placeholder="Enter text here"></textarea>
+              <textarea id="input" class="form-control special-instructions" rows="4" cols="10" placeholder="Enter text here"></textarea>
             </div>
           </div>
         </div>

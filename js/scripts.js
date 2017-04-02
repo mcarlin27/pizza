@@ -1,18 +1,23 @@
 // business logic
+var cheese = [];
+var toppings = [];
+var extraToppings = [];
 
-function Pizza(crust, cheese, toppings) {
+function Pizza(crust, sauce, cheese, size, toppings, extraToppings) {
   this.crust = crust;
   this.sauce = sauce;
   this.cheese = cheese;
+  this.size = size
   this.toppings = toppings;
+  this.extraToppings = extraToppings;
 }
 
 Pizza.prototype.priceCalc = function() {
   var pizzaPrice = (this.crust * 5) + (this.size) + (this.sauce) + (this.cheeses * 1.5) + (this.toppings);
-  return price;
+  return pizzaPrice;
 }
 
-function Address(addressType, street, city, state) {
+function Address(addressType, street, city, state, specialInstructions) {
   this.addressType = addressType;
   this.street = street;
   this.city = city;
@@ -26,38 +31,139 @@ Address.prototype.fullAddress = function() {
 
 // front-end logic
 $(document).ready(function() {
+
+  var crust;
+  var sauce;
+  var size;
+
   $("#add-address").click(function() {
-    $("#address").append('<div class="delivery-address">' +
-                            '<label for="addressType">Address Type</label>' +
-                            '<select class="form-control" id="addressType">' +
-                              '<option>House</option>' +
-                              '<option>Apartment</option>' +
-                              '<option>Office</option>' +
+    $("#address").show();
+  });
+
+
+  $("#add-pizza").click(function() {
+    $("#more-pizza").append('<p><strong>Select a crust type</strong></p>' +
+                            '<div class="radio">' +
+                              '<label>' +
+                                '<input type="radio" name="crust" value="1" checked>' +
+                                'Thin Crust' +
+                              '</label>' +
+                            '</div>' +
+                            '<div class="radio">' +
+                              '<label>' +
+                                '<input type="radio" name="crust" value="3">' +
+                                'Deep Dish' +
+                              '</label>' +
+                            '</div>' +
+                            '<div class="radio">' +
+                              '<label>' +
+                                '<input type="radio" name="crust" value="2">' +
+                                'Grandma Style' +
+                              '</label>' +
+                            '</div>' +
+                            '<div class="radio">' +
+                              '<label>' +
+                                '<input type="radio" name="crust" value="4">' +
+                                'Gluten Free' +
+                              '</label>' +
+                            '</div>' +
+                            '<br><br>' +
+                            '<label for="sauce">Select your sauce</label>' +
+                            '<select id="sauce">' +
+                              '<option value="0">Tomato</option>' +
+                              '<option value="1">Olive Oil</option>' +
+                              '<option value="2">White Sauce</option>' +
                             '</select>' +
+                            '<br><br>' +
+                            '<p><strong>Choose some cheese:</strong></p>' +
+                            '<label class="checkbox-inline">' +
+                              '<input type="checkbox" id="mozzarella" value="1">' +
+                              'Mozzarella' +
+                            '</label>' +
+                            '<label class="checkbox-inline">' +
+                              '<input type="checkbox" id="feta" value="3">' +
+                              'Feta' +
+                            '</label>' +
+                            '<label class="checkbox-inline">' +
+                              '<input type="checkbox" id="ricotta" value="2">' +
+                              'Ricotta' +
+                            '</label>' +
+                            '<label class="checkbox-inline">' +
+                              '<input type="checkbox" id="vegan" value="4">' +
+                              'Vegan--Daiya' +
+                            '</label>' +
+                            '<br><br>' +
+                            '<label for="size">Single out a size</label>' +
+                            '<select id="size">' +
+                              '<option value="8">Small</option>' +
+                              '<option value="10">Medium</option>' +
+                              '<option value="12">Large</option>' +
+                            '</select>' +
+                            '<br><br>' +
+                            '<div class="form-group">' +
+                              '<p><strong>Traditional Toppings</strong></p>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Pepperoni<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Sausage<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Bell pepper<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Onion<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Olives<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Garlic<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Anchovies<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Artichoke<br>' +
+                              '<input type="checkbox" name="trad-toppings" value="1">Mushrooms<br>' +
+                            '</div>' +
                             '<br>' +
                             '<div class="form-group">' +
-                              '<label for="street">Street</label>' +
-                              '<input type="text" class="form-control street">' +
-                            '</div>' +
-                            '<div class="form-group">' +
-                              '<label for="city">City</label>' +
-                              '<input type="text" class="form-control city">' +
-                            '</div>' +
-                            '<div class="form-group">' +
-                              '<label for="state">State</label>' +
-                              '<input type="text" class="form-control state">' +
-                            '</div>' +
-                            '<div class="form-group">' +
-                              '<label for="input">Special Instructions?</label>' +
-                              '<textarea id="input" class="form-control" rows="4" cols="10" placeholder="Enter text here"></textarea>' +
-                            '</div>' +
-                          '</div>');
+                              '<p><strong>Tubular Toppings</strong></p>' +
+                              '<input type="checkbox" name="odd-toppings" value="2">Pineapple<br>' +
+                              '<input type="checkbox" name="odd-toppings" value="2">Potato<br>' +
+                              '<input type="checkbox" name="odd-toppings" value="2">Fried egg<br>' +
+                              '<input type="checkbox" name="odd-toppings" value="2">Jackfruit<br>' +
+                              '<input type="checkbox" name="odd-toppings" value="2">Vegan sausage<br>' +
+                              '<input type="checkbox" name="odd-toppings" value="3">Unicorn meat<br>' +
+                            '</div>');
+
     });
 
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
 
-    var
+    crust = $("input:radio[name=crust]:checked").val();
+    sauce = $("#sauce").val();
+    $("input:checkbox[name=cheese]:checked").each(function() {
+      var cheeseChoice = parseInt($(this).val());
+      cheese.push(cheeseChoice);
+      return cheese;
+    });
+    size = $("#size").val();
+    $("input:checkbox[name=trad-toppings]:checked").each(function() {
+      var toppingsChoice = parseInt($(this).val());
+      toppings.push(toppingsChoice);
+      return toppings;
+    });
+    $("input:checkbox[name=odd-toppings]:checked").each(function() {
+      var oddToppingsChoice = parseInt($(this).val());
+      extraToppings.push(oddToppingsChoice);
+      return extraToppings;
+    });
 
+    // console.log(cheese);
+    // console.log(size);
+    // console.log(toppings);
+    // console.log(extraToppings);
+
+
+
+
+    // var orderPrice = new Pizza.priceCalc()
+    //
+    // var addressType = $(this).find("select#addressType").val();
+    // var inputtedStreet = $(this).find("input.street").val();
+    // var inputtedCity = $(this).find("input.city").val();
+    // var inputtedState = $(this).find("input.state").val();
+    // var inputtedSpecialInstructions = $(this).find("input.special-instructions").val();
+    //
+    // var newAddress = new Address(addressType, inputtedStreet, inputtedCity, inputtedState, inputtedSpecialInstructions)
 
   });
+});
