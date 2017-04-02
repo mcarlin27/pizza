@@ -1,7 +1,7 @@
 // business logic
-var cheese = [];
-var toppings = [];
-var extraToppings = [];
+var cheese = 0;
+var toppings = 0;
+var extraToppings = 0;
 
 function Pizza(crust, sauce, cheese, size, toppings, extraToppings) {
   this.crust = crust;
@@ -13,7 +13,7 @@ function Pizza(crust, sauce, cheese, size, toppings, extraToppings) {
 }
 
 Pizza.prototype.priceCalc = function(crust, sauce, cheese, size, toppings, extraToppings) {
-  var pizzaPrice = (this.crust * 5) + (this.sauce) + parseInt(this.cheese) + (this.size) + parseInt(this.toppings) + parseInt(this.extraToppings);
+  var pizzaPrice = (this.crust * 5) + (this.sauce) + (this.cheese) + (this.size) + (this.toppings) + (this.extraToppings);
   return pizzaPrice;
 }
 
@@ -132,18 +132,18 @@ $(document).ready(function() {
     sauce = parseInt($("#sauce").val());
     $("input:checkbox[name=cheese]:checked").each(function() {
       var cheeseChoice = parseInt($(this).val());
-      cheese.push(cheeseChoice);
+      cheese += cheeseChoice;
       return cheese;
     });
     size = parseInt($("#size").val());
     $("input:checkbox[name=trad-toppings]:checked").each(function() {
       var toppingsChoice = parseInt($(this).val());
-      toppings.push(toppingsChoice);
+      toppings += toppingsChoice;
       return toppings;
     });
     $("input:checkbox[name=odd-toppings]:checked").each(function() {
       var oddToppingsChoice = parseInt($(this).val());
-      extraToppings.push(oddToppingsChoice);
+      extraToppings += oddToppingsChoice;
       return extraToppings;
     });
 
