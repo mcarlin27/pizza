@@ -47,3 +47,9 @@ $(document).ready(function() {
                             '</div>' +
                           '</div>');
     });
+
+  $("form#new-pizza").submit(function(event) {
+    event.preventDefault();
+
+
+  });
