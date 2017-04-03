@@ -3,13 +3,14 @@ var cheese = 0;
 var toppings = 0;
 var extraToppings = 0;
 
-function Pizza(crust, sauce, cheese, size, toppings, extraToppings) {
+function Pizza(crust, sauce, cheese, size, toppings, extraToppings, price) {
   this.crust = crust;
   this.sauce = sauce;
   this.cheese = cheese;
   this.size = size
   this.toppings = toppings;
   this.extraToppings = extraToppings;
+  this.price = [];
 }
 
 Pizza.prototype.priceCalc = function(crust, sauce, cheese, size, toppings, extraToppings) {
@@ -26,8 +27,8 @@ function Address(addressType, street, city, state, specialInstructions) {
 }
 
 Address.prototype.fullAddress = function() {
-  return this.street + ", " + this.city + ", " + this.state + " " + this.specialInstructions;
-};
+  return this.street + ", " + this.city + ", " + this.state + ", " + this.instructions;
+}
 
 // front-end logic
 $(document).ready(function() {
@@ -147,24 +148,29 @@ $(document).ready(function() {
       return extraToppings;
     });
 
+    var pizzaOrder = new Pizza(crust, sauce, cheese, size, toppings, extraToppings);
+    var pizzaOrderPrice = pizzaOrder.priceCalc();
+    pizzaOrder.price.push(pizzaOrderPrice);
+
+    var addressType = $(this).find("select#addressType").val();
+    var inputtedStreet = $(this).find("input.street").val();
+    var inputtedCity = $(this).find("input.city").val();
+    var inputtedState = $(this).find("input.state").val();
+    var inputtedSpecialInstructions = $(this).find("#input").val();
+
+    var newAddress = new Address(addressType, inputtedStreet, inputtedCity, inputtedState, inputtedSpecialInstructions)
+
+    $(".full-order").append(pizzaOrder.price);
+    $(".address-confirmation").append(newAddress.fullAddress());
+
+    $("#order-confirmation").show();
+
+    // console.log(newAddress);
     // console.log(cheese);
     // console.log(size);
     // console.log(toppings);
     // console.log(extraToppings);
-
-    var pizzaOrder = new Pizza(crust, sauce, cheese, size, toppings, extraToppings);
-
-    var pizzaOrderPrice = pizzaOrder.priceCalc(crust, sauce, cheese, size, toppings, extraToppings);
-    console.log(pizzaOrderPrice);
-
-    //
-    // var addressType = $(this).find("select#addressType").val();
-    // var inputtedStreet = $(this).find("input.street").val();
-    // var inputtedCity = $(this).find("input.city").val();
-    // var inputtedState = $(this).find("input.state").val();
-    // var inputtedSpecialInstructions = $(this).find("input.special-instructions").val();
-    //
-    // var newAddress = new Address(addressType, inputtedStreet, inputtedCity, inputtedState, inputtedSpecialInstructions)
+    // console.log(pizzaOrder);
 
   });
 });
