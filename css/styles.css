@@ -23,6 +23,7 @@ h1 {
 
 #order-confirmation {
   display: none;
+  color: grey;
 }
 
 #address {
