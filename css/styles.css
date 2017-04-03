@@ -1,5 +1,24 @@
+body {
+    background-image: url("img/pizza.jpg")
+}
+
 h1 {
   text-align: center;
+  font-family: serif;
+  font-size: 2em;
+}
+
+.jumbotron {
+  padding: 0.5em 0.6em;
+  background-color: white;
+}
+
+.btn {
+  padding: 0.5em;
+}
+
+#new-pizza {
+  color: grey;
 }
 
 #order-confirmation {

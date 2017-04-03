@@ -32,7 +32,6 @@ Address.prototype.fullAddress = function() {
 
 // front-end logic
 $(document).ready(function() {
-
   var crust;
   var sauce;
   var size;
@@ -40,7 +39,6 @@ $(document).ready(function() {
   $("#add-address").click(function() {
     $("#address").show();
   });
-
 
   $("#add-pizza").click(function() {
     $("#more-pizza").append('<p><strong>Select a crust type</strong></p>' +
